@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/add")
 public class ArithmeticController {
 
+
     IArithmeticService arithmeticService;
 
     public ArithmeticController(IArithmeticService arithmeticService)
