@@ -5,6 +5,11 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
+    env:
+      VERSION:  ${{ github.sha }}
+      CONTAINER_REGISTRY: ${{ secrets.AZURE_CONTAINER_REGISTRY }}
+      CONTAINER_REGISTRY_UN: ${{ secrets.CONTAINER_REGISTRY_UN }}
+      CONTAINER_REGISTRY_PW: ${{ secrets.CONTAINER_REGISTRY_PW }}
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -35,3 +40,9 @@ jobs:
           docker login --username anderblm --password ${{secrets.ACCESS_TOKEN}} ghcr.io
           docker build -t ghcr.io/anderblm/arithmetic-service:latest --file Dockerfile .  
           docker push ghcr.io/anderblm/arithmetic-service:latest
+          
+          - uses: tale/kubectl-action@v1
+            with:
+                base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+          - name: Deploy
+            run: ./deploy.sh

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/arithmetic-service.iml" filepath="$PROJECT_DIR$/.idea/arithmetic-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arithmetic-service/arithmetic-service.iml" filepath="$PROJECT_DIR$/arithmetic-service/arithmetic-service.iml" />
     </modules>
   </component>
 </project>
